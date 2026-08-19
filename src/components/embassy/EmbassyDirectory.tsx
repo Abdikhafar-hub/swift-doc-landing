@@ -79,8 +79,8 @@ export function EmbassyDirectory({ initialCountries = VISA_COUNTRIES }: { initia
         )}
       </div>
 
-      {/* Directory Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Directory Grid (2-column on mobile, 3-column on desktop) */}
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5">
         {filtered.map((country) => (
           <VisaCountryCard key={country.slug} country={country} linkPrefix="/embassies" />
         ))}

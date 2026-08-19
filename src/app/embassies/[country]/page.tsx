@@ -299,7 +299,7 @@ export default async function EmbassyDetailPage({
         <section className="border-t border-hairline bg-sand py-16">
           <div className="shell">
             <p className="rule-label">Other Diplomatic Missions in Nairobi</p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
               {related.map((r) => (
                 <VisaCountryCard key={r.slug} country={r} linkPrefix="/embassies" />
               ))}

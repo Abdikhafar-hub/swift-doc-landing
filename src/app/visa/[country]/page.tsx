@@ -464,7 +464,7 @@ export default async function VisaCountryPage({
               </h2>
             </Reveal>
 
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
               {related.map((r, i) => (
                 <Reveal key={r.slug} variant="scale-fade" delay={i * 60}>
                   <VisaCountryCard country={r} />

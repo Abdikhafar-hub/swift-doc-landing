@@ -106,8 +106,8 @@ export function VisaServicesSection() {
           ))}
         </Reveal>
 
-        {/* 3. COUNTRY CARDS GRID */}
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 3. VISA DESTINATION CARDS (2-column on mobile, 3-column on desktop) */}
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5">
           {filteredCountries.map((country, idx) => (
             <Reveal
               key={country.slug}

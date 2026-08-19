@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "Services", to: "/services" },
   { label: "Visa Services", to: "/visa" },
   { label: "Embassies", to: "/embassies" },
+  { label: "Blog", to: "/blog" },
   { label: "Resources", to: "/resources" },
   { label: "FAQ", to: "/faqs" },
   { label: "Contact", to: "/contact" },

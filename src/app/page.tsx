@@ -29,8 +29,10 @@ import { Counter, Reveal } from "@/components/site/motion";
 import { PrimaryLink, GhostLink, WhatsAppButton } from "@/components/site/ui";
 import { PracticeAreasSection } from "@/components/site/PracticeAreasSection";
 import { VisaServicesSection } from "@/components/site/VisaServicesSection";
+import { BlogSection } from "@/components/site/BlogSection";
 import { TestimonialsSection } from "@/components/site/TestimonialsSection";
 import { ContactRequestSection } from "@/components/site/ContactRequestSection";
+import { getContentEntries } from "@/lib/content";
 import {
   COMPANY,
   FAQS,
@@ -68,6 +70,8 @@ const assurances = [
 ];
 
 function Home() {
+  const blogEntries = getContentEntries("blog");
+
   return (
     <>
       {/* ---------------- Hero Section (Editorial Reference Match) ---------------- */}
@@ -639,50 +643,8 @@ function Home() {
         </div>
       </section>
 
-      {/* ---------------- Insights ---------------- */}
-      <section className="border-t border-hairline bg-sand">
-        <div className="shell py-20 lg:py-28">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-            <Reveal variant="fade-up">
-              <p className="rule-label">Insights</p>
-              <h2 className="display-lg mt-6 max-w-xl">Notes from the registry counter.</h2>
-            </Reveal>
-            <Reveal variant="fade-left" delay={80}>
-              <GhostLink href="/blog" className="w-fit">
-                All articles
-              </GhostLink>
-            </Reveal>
-          </div>
-
-          <div className="mt-12 grid gap-px bg-hairline md:grid-cols-3">
-            {POSTS.slice(0, 3).map((post, i) => (
-              <Reveal key={post.slug} variant="scale-fade" delay={i * 90} className="bg-sand">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col p-8 transition-colors hover:bg-background"
-                >
-                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-gold">
-                    {post.category}
-                  </span>
-                  <h3 className="mt-4 font-display text-xl font-extrabold leading-snug tracking-tight">
-                    {post.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {post.excerpt}
-                  </p>
-                  <span className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gold">
-                    Read
-                    <ArrowUpRight
-                      className="size-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ---------------- Blog & Insights Section (4 Featured Articles + Redirect Button) ---------------- */}
+      <BlogSection entries={blogEntries} />
 
       {/* ---------------- Contact / Consultation request section ---------------- */}
       <ContactRequestSection />

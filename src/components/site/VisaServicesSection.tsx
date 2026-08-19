@@ -5,14 +5,8 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  CheckCircle2,
-  FileCheck2,
-  Globe2,
-  Landmark,
-  Plane,
   ShieldCheck,
   Sparkles,
-  Users,
 } from "lucide-react";
 import {
   STANDARD_VISA_DISCLAIMER,
@@ -23,6 +17,7 @@ import {
 } from "@/data/visaCountries";
 import { COMPANY } from "@/data/site";
 import { Reveal } from "@/components/site/motion";
+import { VisaCountryCard } from "@/components/visa/VisaCountryCard";
 
 export function VisaServicesSection() {
   const [selectedGroup, setSelectedGroup] = useState<"all" | VisaGroup>("all");
@@ -120,57 +115,7 @@ export function VisaServicesSection() {
               delay={(idx % 6) * 50}
               className="flex"
             >
-              <Link
-                href={`/visa/${country.slug}`}
-                className="group relative flex w-full flex-col justify-between overflow-hidden rounded-xs border border-hairline bg-card p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-xl"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-0.5 text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                      {country.code} · {country.missionType}
-                    </span>
-                    <span className="text-xs font-semibold text-neutral-400">
-                      {country.categories.length} Categories
-                    </span>
-                  </div>
-
-                  <h3 className="mt-4 font-serif text-xl font-medium tracking-tight text-[#06132F] group-hover:text-gold transition-colors">
-                    {country.name}
-                  </h3>
-
-                  <p className="mt-1 text-xs text-neutral-500 line-clamp-1">
-                    {country.missionName}
-                  </p>
-
-                  <p className="mt-3 text-xs leading-relaxed text-neutral-600 line-clamp-2">
-                    {country.description}
-                  </p>
-
-                  {/* Top categories tags */}
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {country.categories.slice(0, 3).map((cat) => (
-                      <span
-                        key={cat.slug}
-                        className="rounded-xs border border-hairline bg-sand px-2 py-0.5 text-[0.68rem] font-medium text-neutral-700"
-                      >
-                        {(cat.name.split("(")[0] ?? cat.name).trim()}
-                      </span>
-                    ))}
-                    {country.categories.length > 3 && (
-                      <span className="rounded-xs border border-hairline bg-sand px-2 py-0.5 text-[0.68rem] font-medium text-neutral-500">
-                        +{country.categories.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between border-t border-hairline pt-4 text-xs font-bold text-gold group-hover:underline">
-                  <span>View visa requirements</span>
-                  <div className="flex size-7 items-center justify-center rounded-full border border-hairline text-neutral-700 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-                    <ArrowRight className="size-3.5" />
-                  </div>
-                </div>
-              </Link>
+              <VisaCountryCard country={country} />
             </Reveal>
           ))}
         </div>

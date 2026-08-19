@@ -37,6 +37,7 @@ import {
   VISA_PROCESS_STEPS,
 } from "@/data/visaCountries";
 import { COMPANY } from "@/data/site";
+import { VisaCountryCard } from "@/components/visa/VisaCountryCard";
 
 export function generateStaticParams() {
   return VISA_COUNTRIES.map((country) => ({
@@ -103,12 +104,22 @@ export default async function VisaCountryPage({
 
       {/* ---------------- Country Hero Header ---------------- */}
       <section className="relative overflow-hidden border-b border-hairline bg-[#06132F] text-white">
+        {/* Photographic waving flag background */}
         <div
-          className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-gold/15 via-gold/5 to-transparent blur-3xl"
+          className="pointer-events-none absolute inset-0 select-none overflow-hidden"
           aria-hidden="true"
-        />
+        >
+          <img
+            src={country.flagImage}
+            alt=""
+            className="absolute right-0 top-0 h-full w-full object-cover object-right md:w-3/5 opacity-35 transition-transform duration-700"
+          />
+          {/* Gradients ensuring 100% crisp typography on the left and smooth transition to dark navy */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06132F] via-[#06132F]/90 to-[#06132F]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06132F] via-transparent to-transparent" />
+        </div>
 
-        <div className="shell relative py-16 lg:py-24">
+        <div className="shell relative z-10 py-16 lg:py-24">
           <div className="[&_span]:text-white/70 [&_a]:text-white/60">
             <Breadcrumbs items={breadcrumbs} />
           </div>
@@ -456,26 +467,7 @@ export default async function VisaCountryPage({
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((r, i) => (
                 <Reveal key={r.slug} variant="scale-fade" delay={i * 60}>
-                  <Link
-                    href={`/visa/${r.slug}`}
-                    className="group flex h-full flex-col justify-between rounded-xs border border-hairline bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-lg"
-                  >
-                    <div>
-                      <span className="text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                        {r.code} · {r.missionType}
-                      </span>
-                      <h3 className="mt-2 font-serif text-lg font-bold text-[#06132F] group-hover:text-gold transition-colors">
-                        {r.name}
-                      </h3>
-                      <p className="mt-2 text-xs text-neutral-600 line-clamp-2">
-                        {r.tagline}
-                      </p>
-                    </div>
-                    <div className="mt-5 flex items-center justify-between border-t border-hairline pt-3 text-xs font-bold text-gold">
-                      <span>View details</span>
-                      <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </div>
-                  </Link>
+                  <VisaCountryCard country={r} />
                 </Reveal>
               ))}
             </div>

@@ -41,6 +41,7 @@ export interface VisaCountry {
   faqs: { q: string; a: string }[];
   relatedCountries: string[];
   disclaimer: string;
+  flagImage: string;
 }
 
 export const VISA_PROCESS_STEPS = [
@@ -299,6 +300,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["canada", "australia", "united-states", "france", "germany"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/united-kingdom.webp",
   },
 
   // Canada
@@ -467,6 +469,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["united-kingdom", "united-states", "australia", "germany"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/canada.webp",
   },
 
   // Australia
@@ -611,6 +614,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["united-kingdom", "canada", "united-states", "japan"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/australia.webp",
   },
 
   // India
@@ -757,6 +761,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["south-africa", "united-arab-emirates", "united-kingdom", "china"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/india.webp",
   },
 
   // South Africa
@@ -900,6 +905,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["united-kingdom", "india", "nigeria", "tanzania", "rwanda"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/south-africa.webp",
   },
 
   // Nigeria
@@ -1025,6 +1031,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["south-africa", "tanzania", "uganda", "rwanda", "united-kingdom"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/nigeria.webp",
   },
 
   // Tanzania
@@ -1131,6 +1138,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["uganda", "rwanda", "south-africa", "kenya"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/tanzania.webp",
   },
 
   // Uganda
@@ -1257,6 +1265,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["tanzania", "rwanda", "kenya", "south-africa"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/uganda.webp",
   },
 
   // Rwanda
@@ -1375,6 +1384,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["uganda", "tanzania", "kenya", "south-africa"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/rwanda.webp",
   },
 
   // -------------------------------------------------------------
@@ -1526,6 +1536,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["united-kingdom", "canada", "australia", "germany", "france"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/united-states.webp",
   },
 
   // France
@@ -1644,6 +1655,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["germany", "belgium", "czech-republic", "united-kingdom", "united-states"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/france.webp",
   },
 
   // Germany
@@ -1775,6 +1787,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["france", "belgium", "czech-republic", "united-kingdom", "united-states"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/germany.webp",
   },
 
   // Belgium
@@ -1868,6 +1881,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["france", "germany", "czech-republic", "united-kingdom"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/belgium.webp",
   },
 
   // Czech Republic
@@ -1959,6 +1973,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["germany", "france", "belgium", "united-kingdom"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/czech-republic.webp",
   },
 
   // China
@@ -2092,6 +2107,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["united-arab-emirates", "japan", "india", "united-states"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/china.webp",
   },
 
   // United Arab Emirates
@@ -2204,6 +2220,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["saudi-arabia", "china", "india", "united-kingdom", "south-africa"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/united-arab-emirates.webp",
   },
 
   // Saudi Arabia
@@ -2334,6 +2351,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["united-arab-emirates", "india", "china", "united-kingdom"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/saudi-arabia.webp",
   },
 
   // Japan
@@ -2469,6 +2487,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["china", "united-states", "united-kingdom", "australia"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/japan.webp",
   },
 
   // -------------------------------------------------------------
@@ -2631,6 +2650,7 @@ export const VISA_COUNTRIES: VisaCountry[] = [
     ],
     relatedCountries: ["uganda", "tanzania", "rwanda", "united-kingdom", "united-states"],
     disclaimer: STANDARD_VISA_DISCLAIMER,
+    flagImage: "/images/flags/kenya.webp",
   },
 ];
 

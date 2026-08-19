@@ -26,6 +26,7 @@ import {
   VISA_COUNTRIES,
 } from "@/data/visaCountries";
 import { COMPANY } from "@/data/site";
+import { VisaCountryCard } from "@/components/visa/VisaCountryCard";
 
 export function generateStaticParams() {
   return VISA_COUNTRIES.map((country) => ({
@@ -83,7 +84,22 @@ export default async function EmbassyDetailPage({
 
       {/* ---------------- Hero Section ---------------- */}
       <section className="relative overflow-hidden border-b border-hairline bg-[#06132F] text-white">
-        <div className="shell relative py-16 lg:py-24">
+        {/* Photographic waving flag background */}
+        <div
+          className="pointer-events-none absolute inset-0 select-none overflow-hidden"
+          aria-hidden="true"
+        >
+          <img
+            src={country.flagImage}
+            alt=""
+            className="absolute right-0 top-0 h-full w-full object-cover object-right md:w-3/5 opacity-35 transition-transform duration-700"
+          />
+          {/* Gradients ensuring 100% crisp typography on the left and smooth transition to dark navy */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#06132F] via-[#06132F]/90 to-[#06132F]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06132F] via-transparent to-transparent" />
+        </div>
+
+        <div className="shell relative z-10 py-16 lg:py-24">
           <div className="[&_span]:text-white/70 [&_a]:text-white/60">
             <Breadcrumbs items={breadcrumbs} />
           </div>
@@ -285,21 +301,7 @@ export default async function EmbassyDetailPage({
             <p className="rule-label">Other Diplomatic Missions in Nairobi</p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/embassies/${r.slug}`}
-                  className="group rounded-xs border border-hairline bg-card p-5 transition-all duration-300 hover:border-gold hover:shadow-md"
-                >
-                  <span className="text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                    {r.missionType}
-                  </span>
-                  <h3 className="mt-1 font-serif text-base font-bold text-[#06132F] group-hover:text-gold transition-colors">
-                    {r.missionName}
-                  </h3>
-                  <p className="mt-1 text-xs text-neutral-500">
-                    Location: {r.missionCity || "Nairobi"}
-                  </p>
-                </Link>
+                <VisaCountryCard key={r.slug} country={r} linkPrefix="/embassies" />
               ))}
             </div>
           </div>

@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Globe, Search, Sparkles } from "lucide-react";
+import { Globe, Search } from "lucide-react";
 import { VISA_COUNTRIES, VISA_GROUPS, type VisaCountry, type VisaGroup } from "@/data/visaCountries";
+import { VisaCountryCard } from "@/components/visa/VisaCountryCard";
 
 export function VisaDirectory({ initialCountries = VISA_COUNTRIES }: { initialCountries?: VisaCountry[] }) {
   const [selectedGroup, setSelectedGroup] = useState<"all" | VisaGroup>("all");
@@ -117,63 +117,7 @@ export function VisaDirectory({ initialCountries = VISA_COUNTRIES }: { initialCo
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((country) => (
-            <Link
-              key={country.slug}
-              href={`/visa/${country.slug}`}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-xs border border-hairline bg-card p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-xl"
-            >
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-0.5 text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                    {country.code} · {country.missionType}
-                  </span>
-                  <span className="text-xs font-semibold text-neutral-400">
-                    {country.categories.length} Categories
-                  </span>
-                </div>
-
-                <h3 className="mt-4 font-serif text-xl font-medium tracking-tight text-[#06132F] transition-colors group-hover:text-gold">
-                  {country.name}
-                </h3>
-
-                <p className="mt-1 text-xs text-neutral-500 line-clamp-1 font-medium">
-                  {country.missionName}
-                </p>
-
-                <p className="mt-3 text-xs leading-relaxed text-neutral-600 line-clamp-2">
-                  {country.tagline || country.description}
-                </p>
-
-                {/* Categories list */}
-                <div className="mt-5 space-y-1.5 border-t border-hairline pt-4">
-                  <p className="text-[0.68rem] font-bold uppercase tracking-wider text-neutral-400">
-                    Key Categories Handled:
-                  </p>
-                  <ul className="space-y-1">
-                    {country.categories.slice(0, 3).map((cat) => (
-                      <li
-                        key={cat.slug}
-                        className="flex items-baseline justify-between text-xs text-neutral-700"
-                      >
-                        <span className="font-medium truncate max-w-[190px]">
-                          {(cat.name.split("(")[0] ?? cat.name).trim()}
-                        </span>
-                        <span className="text-[0.68rem] text-neutral-400 shrink-0">
-                          {(cat.estimatedTurnaround.split(";")[0] ?? cat.estimatedTurnaround).trim()}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-6 flex items-center justify-between border-t border-hairline pt-4 text-xs font-bold text-gold group-hover:underline">
-                <span>View requirements & process</span>
-                <div className="flex size-7 items-center justify-center rounded-full border border-hairline text-neutral-700 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-                  <ArrowRight className="size-3.5" />
-                </div>
-              </div>
-            </Link>
+            <VisaCountryCard key={country.slug} country={country} />
           ))}
         </div>
       )}

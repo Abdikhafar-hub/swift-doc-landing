@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Building2, ExternalLink, Landmark, MapPin, Search } from "lucide-react";
+import { Building2, Search } from "lucide-react";
 import { VISA_COUNTRIES, type VisaCountry, type VisaGroup } from "@/data/visaCountries";
+import { VisaCountryCard } from "@/components/visa/VisaCountryCard";
 
 export function EmbassyDirectory({ initialCountries = VISA_COUNTRIES }: { initialCountries?: VisaCountry[] }) {
   const [query, setQuery] = useState("");
@@ -82,57 +82,7 @@ export function EmbassyDirectory({ initialCountries = VISA_COUNTRIES }: { initia
       {/* Directory Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((country) => (
-          <div
-            key={country.slug}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-xs border border-hairline bg-card p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-xl"
-          >
-            <div>
-              <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-0.5 text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                  {country.missionType}
-                </span>
-                <span className="flex items-center gap-1 text-xs text-neutral-500 font-medium">
-                  <MapPin className="size-3 text-neutral-400" />
-                  {country.missionCity || "Nairobi"}
-                </span>
-              </div>
-
-              <h3 className="mt-4 font-serif text-xl font-bold tracking-tight text-[#06132F] group-hover:text-gold transition-colors">
-                {country.missionName}
-              </h3>
-
-              <p className="mt-1 text-xs text-neutral-500 font-medium">
-                Country: <strong className="text-neutral-700">{country.name}</strong>
-              </p>
-
-              <div className="mt-5 space-y-2 border-t border-hairline pt-4 text-xs text-neutral-600">
-                <p>
-                  <strong className="text-[#06132F]">Application Center:</strong>{" "}
-                  {country.applicationCenter}
-                </p>
-                <p className="line-clamp-2">
-                  <strong className="text-[#06132F]">Categories Handled:</strong>{" "}
-                  {country.categories.map((c) => (c.name.split("(")[0] ?? c.name).trim()).join(", ")}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center justify-between border-t border-hairline pt-4 text-xs">
-              <Link
-                href={`/embassies/${country.slug}`}
-                className="font-bold text-[#06132F] hover:text-gold transition-colors"
-              >
-                Mission Details
-              </Link>
-              <Link
-                href={`/visa/${country.slug}`}
-                className="inline-flex items-center gap-1 font-bold text-gold hover:underline"
-              >
-                Visa Services
-                <ArrowRight className="size-3" />
-              </Link>
-            </div>
-          </div>
+          <VisaCountryCard key={country.slug} country={country} linkPrefix="/embassies" />
         ))}
       </div>
     </div>

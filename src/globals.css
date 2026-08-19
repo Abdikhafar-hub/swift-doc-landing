@@ -160,6 +160,8 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   body {
@@ -169,6 +171,8 @@
     font-feature-settings: "ss01", "cv01";
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
   }
 
   h1,
